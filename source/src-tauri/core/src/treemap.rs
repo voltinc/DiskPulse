@@ -133,7 +133,7 @@ struct Ctx<'a> {
 fn place_children(ctx: &Ctx, parent: u32, bounds: Rect, depth: u8, group: u32, out: &mut Vec<TreemapRect>) {
     let mut items: Vec<(u32, u64)> =
         ctx.tree.live_children(parent).map(|c| (c, weight(ctx.tree, c, ctx.metric))).filter(|&(_, w)| w > 0).collect();
-    items.sort_by(|a, b| b.1.cmp(&a.1));
+    items.sort_by_key(|item| std::cmp::Reverse(item.1));
     let level_total: f64 = items.iter().map(|&(_, w)| w as f64).sum();
     items.truncate(MAX_ITEMS_PER_LEVEL);
     let weights: Vec<f64> = items.iter().map(|&(_, w)| w as f64).collect();

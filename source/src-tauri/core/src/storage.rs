@@ -114,7 +114,7 @@ pub fn breakdown(tree: &ScanTree, scope: Option<u32>) -> Breakdown {
             percent: if total_size == 0 { 0.0 } else { (c.0 as f64 / total_size as f64 * 100.0) as f32 },
         })
         .collect();
-    categories.sort_by(|a, b| b.size.cmp(&a.size));
+    categories.sort_by_key(|c| std::cmp::Reverse(c.size));
     let mut extensions: Vec<ExtensionStat> = exts
         .into_iter()
         .map(|(extension, (size, files, category))| ExtensionStat { extension, category, size, files })
