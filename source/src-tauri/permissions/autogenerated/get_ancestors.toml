@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-ancestors"
+description = "Enables the get_ancestors command without any pre-configured scope."
+commands.allow = ["get_ancestors"]
+
+[[permission]]
+identifier = "deny-get-ancestors"
+description = "Denies the get_ancestors command without any pre-configured scope."
+commands.deny = ["get_ancestors"]
